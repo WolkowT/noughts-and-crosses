@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Field } from './components/Field';
 import { Information } from './components/Information';
+import PropTypes from 'prop-types';
 
 
 const GameLayout = ({ currentPlayer, isGameEnded, isDraw, field, click, newGame }) => (
@@ -12,6 +13,15 @@ const GameLayout = ({ currentPlayer, isGameEnded, isDraw, field, click, newGame 
     </div>
   </>
 );
+
+GameLayout.propTypes = {
+  currentPlayer: PropTypes.string,
+  isGameEnded: PropTypes.bool,
+  isDraw: PropTypes.bool,
+  field: PropTypes.array,
+  click: PropTypes.func,
+  newGame: PropTypes.func
+};
 
 export const Game = () => {
 
@@ -85,7 +95,7 @@ export const Game = () => {
 
   return (
     <>
-    <GameLayout currentPlayer={currentPlayer} isGameEnded={isGameEnded} isDraw={isDraw} field={field} setCurrentPlayer={setCurrentPlayer} setIsGameEnded={setIsGameEnded} setIsDraw={setIsDraw} setField={setField} click={click} newGame={newGame}/>
+    <GameLayout currentPlayer={currentPlayer} isGameEnded={isGameEnded} isDraw={isDraw} field={field} click={click} newGame={newGame}/>
     </>
   )
 };

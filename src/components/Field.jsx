@@ -1,13 +1,23 @@
 
+import style from "./field.module.css";
+import PropTypes from 'prop-types';
+
 const FieldLayout = ({ field, click, isGameEnded }) => (
     <>
-        <div className="game-board">
+        <div className={style.gameBoard}>
             {field.map((item, index) => (
-                <button className="cell" key={index} id={index} onClick={click} disabled={item !== '' || isGameEnded ? true : false}>{item}</button>
+                <button className={style.cell} key={index} id={index} onClick={click} disabled={item !== '' || isGameEnded ? true : false}>{item}</button>
             ))}
         </div>
     </>
 );
+
+FieldLayout.propTypes = {
+    field: PropTypes.array,
+    click: PropTypes.func,
+    isGameEnded: PropTypes.bool
+};
+  
 
 export const Field = ({ field, click, isGameEnded }) => {
 
@@ -17,4 +27,10 @@ export const Field = ({ field, click, isGameEnded }) => {
         <FieldLayout field={field} click={click} isGameEnded={isGameEnded}/>
         </>
     )
+};
+
+Field.propTypes = {
+    field: PropTypes.array,
+    click: PropTypes.func,
+    isGameEnded: PropTypes.bool
 };

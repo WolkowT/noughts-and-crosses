@@ -1,0 +1,27 @@
+.gameInfo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.draw {
+  font-size: 18px;
+  color: #2ecc71;
+}
+
+.playerTurn {
+  font-size: 18px;
+  color: #555;
+  font-weight: bold;
+}
+
+.cellO {
+  color: #3498db;
+}
+
+.cellX {
+  color: #e74c3c;
+}

@@ -18,46 +18,10 @@ body {
   padding: 20px;
 }
 
-.game-container {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-}
-
 h1 {
   color: #333;
   margin-bottom: 20px;
   font-size: 28px;
-}
-
-.game-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  background-color: #f9f9f9;
-  padding: 15px;
-  border-radius: 8px;
-}
-
-.player-turn {
-  font-size: 18px;
-  color: #555;
-}
-
-.current-player {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-.game-board {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  margin-bottom: 25px;
 }
 
 .cell {
@@ -72,6 +36,7 @@ h1 {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgb(45, 44, 44);
+  /* ? */
 }
 
 .cell:hover {
@@ -111,14 +76,4 @@ h1 {
 
 .new-game:hover {
   background-color: #27ae60;
-}
-
-.win {
-  color: #555;
-  font-size: 18px;
-}
-
-.draw {
-  font-size: 18px;
-  color: #2ecc71;
 }

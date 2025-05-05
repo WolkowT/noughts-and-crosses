@@ -35,20 +35,6 @@ export const Game = () => {
   ]);
 
   
-
-  const click = (event) => {
-    currentPlayer === 'O' ? setCurrentPlayer('X') : setCurrentPlayer('O');
-    currentPlayer === 'O' ? event.target.className = 'cell cell-o' : event.target.className = 'cell cell-x';
-
-    setField(
-      field.map((item, index) => 
-        index === Number(event.target.id) ? currentPlayer : item
-      )
-    );
-    
-  };
-
-    
   const checkWin = (board, player) => {
     const WIN_PATTERNS = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8], // Варианты побед по горизонтали
@@ -63,24 +49,34 @@ export const Game = () => {
 
   const draw = (board) => {
     return board.every(cell => cell !== '') && !checkWin(board, 'X') && !checkWin(board, 'O');
-  }
+  };
 
-  if (checkWin(field, 'X')) {
-    if (!isGameEnded) {
-      setCurrentPlayer('X')
-      setIsGameEnded(true)
-    }
-  } else if (checkWin(field, 'O')) {
-    if (!isGameEnded) {
-      setCurrentPlayer('O')
-      setIsGameEnded(true)
-    }
-  } else if (draw(field)) {
-    if (!isDraw) {
-      setIsDraw(true)
-    }
-  }
 
+  const click = (event) => {
+      const cellIndex = Number(event.target.id);
+      const newPlayer = currentPlayer === 'O' ? 'X' : 'O';
+      const newField = field.map((item, index) => 
+        index === cellIndex ? currentPlayer : item
+      );
+    
+      const xWins = checkWin(newField, 'X');
+      const oWins = checkWin(newField, 'O');
+      const isGameDraw = draw(newField);
+    
+      setField(newField);
+      setCurrentPlayer(newPlayer);
+    
+      if (xWins) {
+        setIsGameEnded(true);
+        setCurrentPlayer('X');
+      } else if (oWins) {
+        setIsGameEnded(true);
+        setCurrentPlayer('O');
+      } else if (isGameDraw) {
+        setIsDraw(true);
+      }
+  };
+  
   const newGame = () => {
     setField([
       '', '', '',
@@ -90,8 +86,7 @@ export const Game = () => {
     setCurrentPlayer('O');
     setIsGameEnded(false);
     setIsDraw(false);
-  }
-
+  };
 
   return (
     <>

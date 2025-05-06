@@ -52,24 +52,22 @@ export const Game = () => {
   };
 
 
-  const click = (event) => {
-      const cellIndex = Number(event.target.id);
+  const click = (index) => {
       const newPlayer = currentPlayer === 'O' ? 'X' : 'O';
-      const newField = field.map((item, index) => 
-        index === cellIndex ? currentPlayer : item
+      const newField = field.map((item, id) => 
+        id === index ? currentPlayer : item
       );
     
-      const xWins = checkWin(newField, 'X');
-      const oWins = checkWin(newField, 'O');
+      const win = checkWin(newField, currentPlayer);
       const isGameDraw = draw(newField);
     
       setField(newField);
       setCurrentPlayer(newPlayer);
     
-      if (xWins) {
+      if (win && currentPlayer === 'X') {
         setIsGameEnded(true);
         setCurrentPlayer('X');
-      } else if (oWins) {
+      } else if (win && currentPlayer === 'O') {
         setIsGameEnded(true);
         setCurrentPlayer('O');
       } else if (isGameDraw) {

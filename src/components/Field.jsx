@@ -6,7 +6,7 @@ const FieldLayout = ({ field, click, isGameEnded }) => (
     <>
         <div className={style.gameBoard}>
             {field.map((item, index) => (
-                <button className={item === 'X' ? 'cell cell-x' : 'cell cell-o'} key={index} id={index} onClick={click} disabled={item !== '' || isGameEnded ? true : false}>{item}</button>
+                <button className={item === 'X' ? 'cell cell-x' : 'cell cell-o'} key={index} id={index} onClick={() => click(index)} disabled={item !== '' || isGameEnded ? true : false}>{item}</button>
             ))}
         </div>
     </>
